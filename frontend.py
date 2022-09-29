@@ -1,7 +1,7 @@
 import streamlit as st
 from loading import predict_and_view
 
-st.title('Predict the food name by using image')
+st.title('😄 Emotion detection with deep learning')
 buffer = st.file_uploader('upload image file here', type=['jpg', 'png', 'jpeg'])
 
 if buffer is not None:
