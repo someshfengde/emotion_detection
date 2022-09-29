@@ -1,5 +1,10 @@
 import streamlit as st
-import panda as pd
+from loading import predict_and_view
 
+st.title('Predict the food name by using image')
+buffer = st.file_uploader('upload image file here', type=['jpg', 'png', 'jpeg'])
 
-st.file_uploader(label, type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible")
+if buffer is not None:
+  st.write('loading')
+  image, name, accuracy = predict_and_view(buffer, './effnet_model.pth')
+  st.image(image, caption=f'prediction is {name} with accuracy {accuracy}')
