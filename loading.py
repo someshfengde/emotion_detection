@@ -26,8 +26,7 @@ def preprocess_buffer(buffer):
 def predict_and_view(buffer, model_path):
     model = load_model(model_path)
     resized_image,buffered_image = preprocess_buffer(buffer)
-    # expanded_image = tf.expand_dims(resized_image, axis=0)
-    prediction = model(resized_image)
-    prediction_name = class_names[prediction.argmax(axis=1)[0]]
-    prediction_accuracy = prediction[0][prediction.argmax(axis=1)[0]]
+    prediction = model(resized_image.reshape(1,3,48,48))
+    prediction_name = class_names[prediction.argmax(axis = 1).numpy()[0]]
+    prediction_accuracy = prediction.max()
     return buffered_image, prediction_name, prediction_accuracy
