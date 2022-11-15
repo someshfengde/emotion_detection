@@ -1,5 +1,5 @@
 numpy==1.22.0
-Pillow==9.2.0
+Pillow==9.3.0
 streamlit==1.13.0
 torch
 torchvision
